@@ -1,48 +1,42 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import { Button } from '../../components/button/button'
 import { Input } from '../../components/input/input'
 import { client } from '../../service/client'
 import { HomeContainer } from './styled'
 
 export const Login = () => {
-  const [login, setLogin] = useState({
-    email: '',
-    password: ''
-  })
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    client.post('/login')
-      .then(res => {
-        setLogin(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-        setLogin([])
-      })
-  }, [])
-
-  const handlerClick = () => {
-    client.post('/login').then((res) => {
-      setLogin(res.data.message)
-    })
+  const handleChangeEmail = ({ target }) => {
+    setEmail(target.value)
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target.value
-    setLogin({
-      ...login,
-      [name]: value
-    })
+  const handleChangePassword = ({ target }) => {
+    setPassword(target.value)
+  }
+
+  const handlerClick = (event) => {
+    event.preventDefault()
+    const user = {
+      email, password
+    }
+    try {
+      client.post('/login', user)
+      navigate('/movie')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
-    <>
-      <HomeContainer>
-        <Input label="Login" type='email' placeholder="email" onChange={handleChange} />
-        <Input label="Passwod" type='password' placeholder="password" onChange={handleChange} />
-        <a>Algo</a>
-        <Button type='button' text='Salvar' onClick={handlerClick} />
-      </HomeContainer>
-    </>
+    <HomeContainer>
+      <Input label="Login" type='email' placeholder="login" onChange={handleChangeEmail} />
+      <Input label="Passwod" type='password' placeholder="password" onChange={handleChangePassword} />
+      <a>Esqueceu sua senha</a>
+      <Button type='button' text='Salvar' onClick={handlerClick} />
+    </HomeContainer>
   )
 }
