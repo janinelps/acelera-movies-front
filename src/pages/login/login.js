@@ -33,10 +33,12 @@ export const Login = () => {
 
   return (
     <HomeContainer>
-      <Input label="Login" type='email' placeholder="login" onChange={handleChangeEmail} />
-      <Input label="Passwod" type='password' placeholder="password" onChange={handleChangePassword} />
-      <link>Esqueceu sua senha</link>
-      <Button type='button' text='Salvar' onClick={handlerClick} />
+      <form>
+        <Input label="Login" type='email' placeholder="login" onChange={handleChangeEmail} />
+        <Input label="Passwod" type='password' placeholder="password" onChange={handleChangePassword} />
+        <a href='#'>Esqueceu sua senha</a>
+        <Button type='button' text='Salvar' onClick={handlerClick} />
+      </form>
     </HomeContainer>
   )
 }

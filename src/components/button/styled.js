@@ -11,8 +11,7 @@ export const ButtonComponent = styled.button`
   padding: 0.8rem 1.2rem;
   box-sizing: border-box;
   transition: 0.1s;
-  margin-left: 10px;
-
+  
   &:hover,
   &:focus {
     outline: none;
