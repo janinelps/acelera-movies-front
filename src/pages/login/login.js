@@ -25,7 +25,7 @@ export const Login = () => {
     }
     try {
       client.post('/login', user)
-      navigate('/movie')
+      navigate('/home')
     } catch (error) {
       console.log(error)
     }
@@ -35,7 +35,7 @@ export const Login = () => {
     <HomeContainer>
       <Input label="Login" type='email' placeholder="login" onChange={handleChangeEmail} />
       <Input label="Passwod" type='password' placeholder="password" onChange={handleChangePassword} />
-      <a>Esqueceu sua senha</a>
+      <link>Esqueceu sua senha</link>
       <Button type='button' text='Salvar' onClick={handlerClick} />
     </HomeContainer>
   )

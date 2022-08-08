@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Header } from '../../components/header/header'
+import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
+import { Lista } from './styled'
 
 export const Movie = () => {
   const [movie, setMovie] = useState([])
@@ -16,14 +19,18 @@ export const Movie = () => {
 
   return (
     <>
-      <p>PAGINA DE MOVIES</p>
-      <ul>
+      <Menu />
+      <Header title="All Movies" />
+      <Lista>
         {movie.map((movie) => (
           < li key={movie.id} >
-            <img src={movie.image} /> {movie.title} - Autors
+            <div>
+              <img src={movie.image} alt={`Poster do filme ${movie.title}`} />
+            </div>
+            {movie.title} - {movie.resume}
           </li>
         ))}
-      </ul>
+      </Lista>
     </>
   )
 }
