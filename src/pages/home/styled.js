@@ -10,7 +10,7 @@ export const Lista = styled.ul`
   }
 
   img{
-    width:20%;
+    width:9em;
     padding-bottom: 30px ;
     overflow: hidden;
   }

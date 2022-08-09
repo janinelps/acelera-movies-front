@@ -27,7 +27,7 @@ export const Movie = () => {
             <img src={movie.image} alt={`Poster do filme ${movie.title}`} />
             <CardTitle>
               <h2>{movie.title}</h2>
-              <h5>Date: {movie.releaseDate}</h5>
+              <h5>Date: {new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(movie.releaseDate))}</h5>
               <p>
                 {movie.resume}
               </p>
