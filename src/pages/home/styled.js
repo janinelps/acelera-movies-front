@@ -15,6 +15,10 @@ export const Lista = styled.ul`
     overflow: hidden;
   }
 
+  a{
+    display: contents;
+  }
+
 `
 
 export const CardTitle = styled.div`
@@ -43,4 +47,9 @@ export const CardTitle = styled.div`
     padding: 0 0px 0 0.25em;
   }
 }
+`
+
+export const Container = styled.div`
+  display:flex ;
+  justify-content: space-between;
 `

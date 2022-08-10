@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Rating } from 'react-simple-star-rating'
 import { Header } from '../../components/header/header'
 import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
-import { CardTitle, Lista } from './styled'
+import dateFormat from 'dateformat'
+import { CardTitle, Container, Lista } from './styled'
 
-export const Movie = () => {
+export const Home = () => {
   const [movie, setMovie] = useState([])
 
   useEffect(() => {
@@ -17,20 +20,33 @@ export const Movie = () => {
       })
   }, [])
 
+  const handleStar = (value) => {
+    setMovie({ ...movie, note: value })
+  }
+
   return (
     <>
       <Menu />
       <Header title="All Movies" />
-      <Lista>
+      <Lista >
         {movie.map((movie) => (
           < li key={movie.id} >
             <img src={movie.image} alt={`Poster do filme ${movie.title}`} />
             <CardTitle>
-              <h2>{movie.title}</h2>
-              <h5>Date: {new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(movie.releaseDate))}</h5>
-              <p>
-                {movie.resume}
-              </p>
+              <Container>
+                <div>
+                  <h2>{movie.title}</h2>
+                  <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>
+                </div>
+                <div>
+                  <Rating onChange={handleStar} ratingValue={movie.note} />
+                </div>
+              </Container>
+              <Link to={`/movie/${movie.id}`}>
+                <p>
+                  {movie.resume}
+                </p>
+              </Link>
             </CardTitle>
           </li>
         ))}

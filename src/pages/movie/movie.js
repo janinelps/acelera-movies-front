@@ -1,36 +1,60 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { Rating } from 'react-simple-star-rating'
 import { Header } from '../../components/header/header'
 import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
-import { Lista } from './styled'
+import { Container, Title } from './styled'
+import dateFormat from 'dateformat'
 
 export const Movie = () => {
-  const [movie, setMovie] = useState([])
+  const { id } = useParams()
+  const [movie, setMovie] = useState({ title: '', director: '' })
 
   useEffect(() => {
-    client.get('/movie').then(res => {
-      setMovie(res.data)
+    client.get(`/movie/${id}`).then(res => {
+      setMovie(res.data.movie)
     })
       .catch(error => {
         console.log(error)
-        setMovie([])
+        setMovie()
       })
   }, [])
+
+  const handleStar = (value) => {
+    setMovie({ ...movie, note: value })
+  }
 
   return (
     <>
       <Menu />
-      <Header title="All Movies" />
-      <Lista>
-        {movie.map((movie) => (
-          < li key={movie.id} >
-            <div>
-              <img src={movie.image} alt={`Poster do filme ${movie.title}`} />
-            </div>
-            {movie.title} - {movie.resume}
-          </li>
-        ))}
-      </Lista>
+      <Header title={movie.title} />
+      <Container>
+        <Title>
+          <img src={movie.image}></img>
+          <div>
+            <h2>{movie.title} </h2>
+            {movie.releaseDate && <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>}
+          </div>
+          <div>
+            <Rating onChange={handleStar} ratingValue={movie.note} />
+          </div>
+        </Title>
+        <div>
+        </div>
+        <p>{movie.resume}</p>
+        <div>
+          {movie.gender?.split(',').map((gende, index) => (
+            <div key={index}>{gende}</div>
+          ))
+          }
+          <h4>Classification: {movie.classification}</h4>
+          <h4>Director: {movie.director}</h4>
+          <h4>Writer: {movie.writer}</h4>
+          <h4>Studio: {movie.studio}</h4>
+          <h4>Stars: {movie.actors}</h4>
+        </div>
+      </Container>
     </>
   )
 }
