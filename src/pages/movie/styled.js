@@ -1,12 +1,23 @@
 import styled from 'styled-components'
 
+export const Icon = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 30px;
+`
+
+export const StyledHeader = styled.div`
+display: flex;
+flex-direction:center ;
+`
+
 export const Container = styled.div`
   padding: 50px ;
   display: flex;
   flex-direction: column;
   
   img{
-    width:20%;
+    width:80%;
   }
 `
 
@@ -15,7 +26,7 @@ export const Context = styled.div`
   width:70% ;
   text-align: initial;
 
-    p {
+  p {
     overflow: hidden;
     position: relative;
     line-height: 1.2em;
@@ -35,4 +46,17 @@ export const Context = styled.div`
 export const Title = styled.div`
   display:flex ;
   justify-content: space-between;
+  margin-top: 50px;
+`
+export const Gender = styled.div`
+  display: flex;
+
+  div{
+    margin: 20px;
+  }
+  span { 
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--gray-line); 
+  }
 `

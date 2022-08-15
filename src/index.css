@@ -7,31 +7,31 @@
 :root {
   --white: #fff;
   --background: #cee9f0;
-  --gray-line: #DCDDE0;
-  --text: #666666;
-  --text-highlight: #B3B9FF;
-  --title: #2E384D;
-  --red: #E83F5B;
-  --green: #4CD62B;
-  --blue: #5965E0;
-  --blue-dark: #4953B8;
-  --blue-twitter: #2AA9E0;
-} 
+  --gray-line: #b5b6b8;
+  --text: #484747;
+  --text-highlight: #b3b9ff;
+  --title: #2e384d;
+  --red: #e83f5b;
+  --green: #4cd62b;
+  --blue: #5965e0;
+  --blue-dark: #4953b8;
+  --blue-twitter: #2aa9e0;
+}
 
 body {
   background: var(--background);
   color: var(--text);
 }
 
-body, input {
-  font: 400 1rem 'Inter', sans-serif;
+body,
+input {
+  font: 400 1rem "Inter", sans-serif;
 }
 
 button {
   cursor: pointer;
 }
 
-.divlanding{
+.divlanding {
   display: flex;
-  height: 100vh;
 }

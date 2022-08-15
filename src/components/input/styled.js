@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const InputBox = styled.label`
 display: block;
-margin-bottom: 20px;
+margin: 20px;
 
 span {
   display: block;
