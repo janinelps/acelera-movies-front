@@ -23,5 +23,4 @@ export const Aside = styled.nav`
     border-radius: 15px;
     font-weight: 900;
   }
-
 `
