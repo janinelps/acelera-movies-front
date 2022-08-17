@@ -28,6 +28,7 @@ export const Login = () => {
 
   return (
     <HomeContainer>
+      <h1>Acelera Movies</h1>
       <form>
         <Input name='email' label="Login" type='email' placeholder="login" onChange={handleChange} />
         <Input name='password' label="Password" type='password' placeholder="password" onChange={handleChange} />

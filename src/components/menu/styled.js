@@ -9,7 +9,7 @@ export const Aside = styled.nav`
   max-width: 25%;
   padding-top: 50px;
   align-item: center;
-  height: 100vh;
+  min-height: 100vh; 
 
   button{
     background-color: var(--blue);
