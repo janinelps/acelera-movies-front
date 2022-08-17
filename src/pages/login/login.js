@@ -7,24 +7,19 @@ import { HomeContainer } from './styled'
 
 export const Login = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [login, setLogin] = useState('')
 
-  const handleChangeEmail = ({ target }) => {
-    setEmail(target.value)
-  }
-
-  const handleChangePassword = ({ target }) => {
-    setPassword(target.value)
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setLogin({
+      ...login, [name]: value
+    })
   }
 
   const handlerClick = (event) => {
     event.preventDefault()
-    const user = {
-      email, password
-    }
     try {
-      client.post('/login', user)
+      client.post('/login', login)
       navigate('/home')
     } catch (error) {
       console.log(error)
@@ -34,8 +29,8 @@ export const Login = () => {
   return (
     <HomeContainer>
       <form>
-        <Input label="Login" type='email' placeholder="login" onChange={handleChangeEmail} />
-        <Input label="Passwod" type='password' placeholder="password" onChange={handleChangePassword} />
+        <Input name='email' label="Login" type='email' placeholder="login" onChange={handleChange} />
+        <Input name='password' label="Password" type='password' placeholder="password" onChange={handleChange} />
         <a href='#'>Esqueceu sua senha</a>
         <Button type='button' text='Salvar' onClick={handlerClick} />
       </form>

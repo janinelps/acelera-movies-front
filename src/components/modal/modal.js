@@ -1,9 +1,19 @@
-import { Container, ModalStyle } from './styled'
-import { FormMovie } from '../forms/form'
+import { useState } from 'react'
+import { Button } from '../button/button'
+import { Container, ModalStyle, StyleInput } from './styled'
 
-export const Modal = ({ children, setModal }) => {
-  const handleClick = () => {
-    setModal(modal => !modal)
+export const Modal = ({ children, label, title, icon, callback, text }) => {
+  const [show, setShow] = useState(false)
+
+  const onClose = () => {
+    setShow(false)
+    if (callback) {
+      callback()
+    }
+  }
+
+  if (!show) {
+    return <Button icon={icon} text={text} onClick={() => setShow(true)}>{label}</Button>
   }
 
   return (
@@ -12,14 +22,11 @@ export const Modal = ({ children, setModal }) => {
         <ModalStyle>
           <div>
             <header>
-              <h2>Titulo da Modal</h2>
-              <button onClick={handleClick}>X</button>
+              <h2>{title}</h2>
+              <StyleInput type='button' onClick={onClose} value='X' />
             </header>
           </div>
-          <div>
-            <FormMovie />
-          </div>
-          <div>{children}</div>
+          {children}
         </ModalStyle>
       </Container>
     </>

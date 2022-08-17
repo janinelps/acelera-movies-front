@@ -32,10 +32,11 @@ export const ModalStyle = styled.div`
     margin-bottom: 10px;
     padding:10px;
   }
+`
 
-  button{
+export const StyleInput = styled.input`
     border:none;
-    background:none;
+    background: var(--blue-dark) ;
     color: var(--white) ;
     cursor: pointer;
     font-weight:900;

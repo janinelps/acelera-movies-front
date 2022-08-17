@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Aside = styled.aside`
+export const Aside = styled.nav`
   background-color: var(--blue);
   text-decoration: none;
   padding-left: 1.3rem;
@@ -15,10 +15,12 @@ export const Aside = styled.aside`
     margin:10px;
   }
 
-  h3{
-    background-color: gray;
+  section{
+    background-color: var(--gray-line);
     padding:10%;
     text-align: center;
+    border-radius: 15px;
+    font-weight: 900;
   }
 
 `

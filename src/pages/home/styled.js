@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+export const StyledHeader = styled.div`
+  display:flex ;
+  justify-content: end;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background: var(--gray-line);
+`
+
 export const Lista = styled.ul`
   padding: 50px ;
   list-style: none;
@@ -39,14 +47,14 @@ export const CardTitle = styled.div`
     text-align: justify;
 
     &:before {
-    content: '...';
-    position: absolute;
-    right: 0px;
-    bottom: 0;
-    background-color: var(--background);
-    padding: 0 0px 0 0.25em;
+      content: '...';
+      position: absolute;
+      right: 0px;
+      bottom: 0;
+      background-color: var(--background);
+      padding: 0 0px 0 0.25em;
+    }
   }
-}
 `
 
 export const Container = styled.div`

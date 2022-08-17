@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const FormConteaner = styled.div`
-    display: flex;
+display: flex;
     flex-direction: column;
     align-items: center;
 
@@ -11,6 +11,7 @@ export const FormConteaner = styled.div`
     }
 
   button{
+    border-color:1px solid black;
     border-radius:5px;
     width:100%;
   }

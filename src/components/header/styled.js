@@ -3,11 +3,20 @@ import styled from 'styled-components'
 export const Headers = styled.header`
   color: var(--text);
   width: 100%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  height: 3em;
+  background: var(--gray-line) ;
+  text-align: center;
+  display:flex;
+  justify-content: center;
   align-items: center;
-  padding-top: 0.75rem;
+
+  section{
+    width: 20%;
+    float: left;
+    height: 100%;
+    line-height: 3rem;
+    background: var(--red) ;
+  }
 
   h2{
     display:inline ;

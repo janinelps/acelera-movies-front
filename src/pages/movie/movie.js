@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { Rating } from 'react-simple-star-rating'
 import { Header } from '../../components/header/header'
 import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
-import { Container, Gender, Title, Icon } from './styled'
 import dateFormat from 'dateformat'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { Modal } from '../../components/modal/modal'
+import {
+  Container,
+  Gender,
+  Title,
+  StyleTitle,
+  Conteudo
+} from './styled'
+import { FormMovie } from '../../components/forms/form'
+import { Button } from '../../components/button/button'
 
 export const Movie = () => {
   const { id } = useParams()
   const [movie, setMovie] = useState({ title: '', director: '' })
-  const [modal, setModal] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     client.get(`/movie/${id}`).then(res => {
@@ -30,7 +37,7 @@ export const Movie = () => {
   }
 
   const handleEdit = async () => {
-    setModal(modal => !modal)
+    alert('Salvo com sucesso!')
   }
 
   const handleDelete = (id) => {
@@ -40,6 +47,8 @@ export const Movie = () => {
       client.delete(`/movie/${id}`)
       const newMovie = movie.filter(movie => movie.id !== id)
       setMovie(newMovie)
+      location.reload()
+      navigate('/login')
     } catch (error) {
       console.error(error)
     }
@@ -49,30 +58,27 @@ export const Movie = () => {
     <>
       <Menu />
       <Container>
-        {modal && <Modal setModal={setModal} />}
-        <div>
-          <Icon onClick={() => handleDelete(movie.id)}>
-            <Header title={movie.title} />
-            <FontAwesomeIcon icon={faTrashAlt} className='icon' />
-          </Icon>
-          <Icon onClick={() => handleEdit(movie.id)}>
-            <FontAwesomeIcon icon={faPencilAlt} className='icon' />
-          </Icon>
-        </div>
         <Title>
+          <Modal icon={faPencilAlt} title='Editar Movie' ><FormMovie id={movie.id} method="PUT" callback={handleEdit} /> </Modal>
+          <Button icon={faTrashAlt} onClick={() => handleDelete(movie.id)} />
+          <Header title={movie.title} />
+        </Title>
+        <Conteudo>
           <div>
             <img src={movie.image}></img>
           </div>
           <div>
-            <div>
-              <h2>{movie.title}
-              </h2>
-              {movie.releaseDate && <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>}
-            </div>
-            <Rating onChange={handleStar} ratingValue={movie.note} />
+            <StyleTitle>
+              <div>
+                <h2>{movie.title}
+                </h2>
+                {movie.releaseDate && <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>}
+              </div>
+              <Rating onChange={handleStar} ratingValue={movie.note} />
+            </StyleTitle>
             <p>{movie.resume}</p>
           </div>
-        </Title>
+        </Conteudo>
 
         <div>
           <Gender>
@@ -83,11 +89,11 @@ export const Movie = () => {
             ))
             }
           </Gender>
-          <h4>Classification: {movie.classification}</h4>
-          <h4>Director: {movie.director}</h4>
-          <h4>Writer: {movie.writer}</h4>
-          <h4>Studio: {movie.studio}</h4>
-          <h4>Stars: {movie.actors}</h4>
+          <h4><strong>Classification:</strong> {movie.classification}</h4>
+          <h4><strong>Director:</strong> {movie.director}</h4>
+          <h4><strong>Writer:</strong>{movie.writer}</h4>
+          <h4><strong>Studio:</strong> {movie.studio}</h4>
+          <h4><strong>Stars:</strong> {movie.actors}</h4>
         </div>
       </Container>
     </>

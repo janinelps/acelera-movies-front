@@ -1,11 +1,5 @@
 import styled from 'styled-components'
 
-export const Icon = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  font-size: 30px;
-`
-
 export const StyledHeader = styled.div`
 display: flex;
 flex-direction:center ;
@@ -19,34 +13,39 @@ export const Container = styled.div`
   img{
     width:80%;
   }
-`
 
-export const Context = styled.div`
-  padding-left: 20px;
-  width:70% ;
-  text-align: initial;
-
-  p {
-    overflow: hidden;
-    position: relative;
-    line-height: 1.2em;
-    max-height: 8.2em;
-    text-align: justify;
-
-    &:before {
-    content: '...';
-    position: absolute;
-    right: 0px;
-    bottom: 0;
-    background-color: var(--background);
-    padding: 0 0px 0 0.25em;
+  h4{
+    font-weight: lighter;
   }
+  
 `
 
 export const Title = styled.div`
   display:flex ;
-  justify-content: space-between;
-  margin-top: 50px;
+  justify-content: end;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background: var(--gray-line);
+  flex-direction: row-reverse;
+
+  button{
+    z-index: 1;
+    background: var(--gray-line);
+    font-size: 30px;
+    color: black;
+    
+    &:hover{
+      box-shadow: none;
+      color: var(--red);
+    }
+  }
+`
+
+export const Conteudo = styled.div`
+  display:flex ;
+  justify-content: end;
+  margin-top: 5px;
+  margin-bottom: 15px;
 `
 export const Gender = styled.div`
   display: flex;
@@ -59,4 +58,9 @@ export const Gender = styled.div`
     border-radius: 10px;
     background-color: var(--gray-line); 
   }
+`
+export const StyleTitle = styled.div`
+  display:flex ;
+  justify-content: space-between;
+  margin-bottom: 10px;
 `

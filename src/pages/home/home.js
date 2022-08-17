@@ -5,7 +5,7 @@ import { Header } from '../../components/header/header'
 import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
 import dateFormat from 'dateformat'
-import { CardTitle, Container, Lista } from './styled'
+import { CardTitle, Container, Lista, StyledHeader } from './styled'
 
 export const Home = () => {
   const [movie, setMovie] = useState([])
@@ -27,8 +27,10 @@ export const Home = () => {
   return (
     <>
       <Menu />
-      <Header title="All Movies" />
       <Lista >
+        <StyledHeader>
+          <Header title="All Movies" />
+        </StyledHeader>
         {movie.map((movie) => (
           < li key={movie.id} >
             <img src={movie.image} alt={`Poster do filme ${movie.title}`} />
