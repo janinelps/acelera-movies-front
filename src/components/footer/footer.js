@@ -1,4 +1,4 @@
-import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../button/button'
 import { FooterStyled } from './styled'
 
@@ -11,7 +11,7 @@ export const Footer = () => {
     <FooterStyled>
       <p></p>
       <p> Feito por<em> &nbsp; &nbsp;<a href='https://github.com/janinelps' target='_blank' rel="noreferrer" ><strong> Janine Santos </strong></a> &nbsp; &nbsp; </em>  Aceleradora Ágil - 2022</p>
-      <Button onClick={handleClick} icon={faCaretUp} />
+      <Button onClick={handleClick} icon={faArrowUp} />
     </FooterStyled>
   )
 }
