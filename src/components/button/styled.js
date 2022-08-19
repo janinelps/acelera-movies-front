@@ -7,7 +7,6 @@ export const ButtonComponent = styled.button`
   border-radius: 0.4rem;
   background: var(--blue-dark);
   color:var(--white);
-  min-width: 8rem;
   padding: 0.8rem 1.2rem;
   box-sizing: border-box;
   transition: 0.1s;

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../button/button'
 import { FormMovie } from '../forms/form'
 import { Modal } from '../modal/modal'
@@ -20,6 +20,7 @@ export const Menu = () => {
     <Aside >
       <section>Helo user!</section>
       <Modal text='Add Movie' title='Adicionar Movie'><FormMovie callback={handleSubmit} /></Modal>
+      <Link to={'/home'}>Home</Link>
       <Button text='Sair' onClick={handleClick}></Button>
     </Aside >
   )

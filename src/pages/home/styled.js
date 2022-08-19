@@ -35,7 +35,7 @@ export const CardTitle = styled.div`
   text-align: initial;
 
   h5{
-    color: blue;
+    color: var(--blue-dark);
     padding-bottom: 40px ;
   }
 

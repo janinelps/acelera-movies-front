@@ -19,7 +19,7 @@ import { Button } from '../../components/button/button'
 
 export const Movie = () => {
   const { id } = useParams()
-  const [movie, setMovie] = useState({ title: '', director: '' })
+  const [movie, setMovie] = useState({})
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -32,23 +32,26 @@ export const Movie = () => {
       })
   }, [])
 
-  const handleStar = (value) => {
-    setMovie({ ...movie, note: value })
+  const handleStar = async (value) => {
+    const movieTemp = { ...movie, note: value }
+    setMovie(movieTemp)
+    await client.put(`/movie/${movie.id}`, movieTemp)
+      .catch(error => {
+        console.log(error)
+        setMovie([])
+      })
   }
 
   const handleEdit = async () => {
     alert('Salvo com sucesso!')
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     try {
       const answer = confirm('Deseja excluir o item?')
       if (answer === false) return
-      client.delete(`/movie/${id}`)
-      const newMovie = movie.filter(movie => movie.id !== id)
-      setMovie(newMovie)
-      location.reload()
-      navigate('/login')
+      await client.delete(`/movie/${id}`)
+      navigate('/home')
     } catch (error) {
       console.error(error)
     }
@@ -74,7 +77,7 @@ export const Movie = () => {
                 </h2>
                 {movie.releaseDate && <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>}
               </div>
-              <Rating onChange={handleStar} ratingValue={movie.note} />
+              <Rating onClick={handleStar} ratingValue={movie.note} />
             </StyleTitle>
             <p>{movie.resume}</p>
           </div>
@@ -91,9 +94,10 @@ export const Movie = () => {
           </Gender>
           <h4><strong>Classification:</strong> {movie.classification}</h4>
           <h4><strong>Director:</strong> {movie.director}</h4>
-          <h4><strong>Writer:</strong>{movie.writer}</h4>
+          <h4><strong>Writer:</strong> {movie.writer}</h4>
           <h4><strong>Studio:</strong> {movie.studio}</h4>
           <h4><strong>Stars:</strong> {movie.actors}</h4>
+          {movie.awards && <h4><strong>Awards:</strong> {movie.awards}</h4>}
         </div>
       </Container>
     </>

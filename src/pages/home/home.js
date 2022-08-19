@@ -6,6 +6,7 @@ import { Menu } from '../../components/menu/menu'
 import { client } from '../../service/client'
 import dateFormat from 'dateformat'
 import { CardTitle, Container, Lista, StyledHeader } from './styled'
+import { Footer } from '../../components/footer/footer'
 
 export const Home = () => {
   const [movie, setMovie] = useState([])
@@ -27,6 +28,7 @@ export const Home = () => {
   return (
     <>
       <Menu />
+      <span id="VoltaAoTopo"></span>
       <Lista >
         <StyledHeader>
           <Header title="All Movies" />
@@ -41,7 +43,7 @@ export const Home = () => {
                   <h5>Date: {dateFormat(movie.releaseDate, 'dd/mm/yyyy')}</h5>
                 </div>
                 <div>
-                  <Rating onChange={handleStar} ratingValue={movie.note} />
+                  <Rating readonly={true} onChange={handleStar} ratingValue={movie.note} />
                 </div>
               </Container>
               <Link to={`/movie/${movie.id}`}>
@@ -52,6 +54,7 @@ export const Home = () => {
             </CardTitle>
           </li>
         ))}
+        <Footer />
       </Lista>
     </>
   )

@@ -11,19 +11,21 @@ export const Container = styled.div`
   flex-direction: column;
   
   img{
-    width:80%;
+    width:100%;
   }
 
   h4{
     font-weight: lighter;
   }
   
+  div{
+    margin: 10px 0 10px 10px;
+  }
 `
 
 export const Title = styled.div`
   display:flex ;
   justify-content: end;
-  margin-top: 5px;
   margin-bottom: 15px;
   background: var(--gray-line);
   flex-direction: row-reverse;
@@ -44,15 +46,14 @@ export const Title = styled.div`
 export const Conteudo = styled.div`
   display:flex ;
   justify-content: end;
-  margin-top: 5px;
-  margin-bottom: 15px;
 `
 export const Gender = styled.div`
   display: flex;
 
   div{
-    margin: 20px;
+    margin: 10px;
   }
+
   span { 
     padding: 10px;
     border-radius: 10px;
@@ -62,5 +63,8 @@ export const Gender = styled.div`
 export const StyleTitle = styled.div`
   display:flex ;
   justify-content: space-between;
-  margin-bottom: 10px;
+
+  h5{
+    color: var(--blue-dark)
+  }
 `

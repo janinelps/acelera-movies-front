@@ -13,7 +13,7 @@ export const Aside = styled.nav`
 
   button{
     background-color: var(--blue);
-    margin:10px;
+    margin:20px 10px;
   }
 
   section{
@@ -22,5 +22,31 @@ export const Aside = styled.nav`
     text-align: center;
     border-radius: 15px;
     font-weight: 900;
+  }
+
+  a{
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.4rem;
+  color:var(--white);
+  min-width: 8rem;
+  padding: 0.8rem 1.2rem;
+  box-sizing: border-box;
+  transition: 0.1s;
+  margin: 10px;
+  
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--blue-twitter), 0 0 0 4px var(--white);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: wait;
+    box - shadow: none;
+  }
   }
 `

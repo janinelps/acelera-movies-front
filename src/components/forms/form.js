@@ -27,7 +27,6 @@ export const FormMovie = ({ method = 'POST', id = '', callback = () => { } }) =>
     setFormMovie({
       ...formMovie, [name]: value
     })
-    console.log(name)
   }
 
   useEffect(() => {
@@ -78,7 +77,7 @@ export const FormMovie = ({ method = 'POST', id = '', callback = () => { } }) =>
         </div>
         <div>
           <Input type='text' name='classification' label='Classification' placeholder='classification' onChange={handleChange} value={formMovie.classification} />
-          <Input type='text' name='Studio' label='Studio' placeholder='Studio' onChange={handleChange} value={formMovie.studio} />
+          <Input type='text' name='studio' label='Studio' placeholder='Studio' onChange={handleChange} value={formMovie.studio} />
         </div>
         <div>
           <Input type='text' name='actors' label='Stars' placeholder='Actor' onChange={handleChange} value={formMovie.actors} />
