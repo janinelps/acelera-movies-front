@@ -8,8 +8,10 @@ export const Aside = styled.nav`
   min-width: 15%;
   max-width: 25%;
   padding-top: 50px;
-  align-item: center;
+  text-align: center;
   min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
 
   button{
     background-color: var(--blue);
