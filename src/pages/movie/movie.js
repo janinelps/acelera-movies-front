@@ -42,10 +42,6 @@ export const Movie = () => {
       })
   }
 
-  const handleEdit = async () => {
-    alert('Salvo com sucesso!')
-  }
-
   const handleDelete = async (id) => {
     try {
       const answer = confirm('Deseja excluir o item?')
@@ -62,7 +58,7 @@ export const Movie = () => {
       <Menu />
       <Container>
         <Title>
-          <Modal icon={faPencilAlt} title='Editar Movie' ><FormMovie id={movie.id} method="PUT" callback={handleEdit} /> </Modal>
+          <Modal icon={faPencilAlt} title='Editar Movie' ><FormMovie id={movie.id} method="PUT" /> </Modal>
           <Button icon={faTrashAlt} onClick={() => handleDelete(movie.id)} />
           <Header title={movie.title} />
         </Title>
