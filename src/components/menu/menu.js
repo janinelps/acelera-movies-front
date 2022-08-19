@@ -21,7 +21,7 @@ export const Menu = () => {
       <section>Helo user!</section>
       <Modal text='Add Movie' title='Adicionar Movie'><FormMovie callback={handleSubmit} /></Modal>
       <Link to={'/home'}>Home</Link>
-      <Button text='Sair' onClick={handleClick}></Button>
+      <Button text='Exit' onClick={handleClick}></Button>
     </Aside >
   )
 }

@@ -7,7 +7,7 @@ import { HomeContainer } from './styled'
 
 export const Login = () => {
   const navigate = useNavigate()
-  const [login, setLogin] = useState('')
+  const [login, setLogin] = useState({ email: '', password: '' })
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -16,8 +16,16 @@ export const Login = () => {
     })
   }
 
+  const digitar = { email: 'teste', password: '1234' }
+
+  const handleRememberPassword = () => {
+    alert(`Seu email é ${digitar.email.toUpperCase()}
+    Sua senha é ${digitar.password}`)
+  }
+
   const handlerClick = (event) => {
     event.preventDefault()
+    if (digitar.email !== login.email || digitar.password !== login.password) return alert('Usuario ou senha incorreta. ')
     try {
       client.post('/login', login)
       navigate('/home')
@@ -32,8 +40,8 @@ export const Login = () => {
       <form>
         <Input name='email' label="Login" type='email' placeholder="login" onChange={handleChange} />
         <Input name='password' label="Password" type='password' placeholder="password" onChange={handleChange} />
-        <a href='#'>Esqueceu sua senha</a>
-        <Button type='button' text='Salvar' onClick={handlerClick} />
+        <a href='#' onClick={handleRememberPassword}>Esqueceu sua senha</a>
+        <Button type='button' text='Login' onClick={handlerClick} />
       </form>
     </HomeContainer>
   )
