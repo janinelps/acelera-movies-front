@@ -16,22 +16,18 @@ export const Login = () => {
     })
   }
 
-  const digitar = { email: 'teste', password: '1234' }
-
-  const handleRememberPassword = () => {
-    alert(`Seu email é ${digitar.email.toUpperCase()}
-    Sua senha é ${digitar.password}`)
-  }
-
   const handlerClick = (event) => {
     event.preventDefault()
-    if (digitar.email !== login.email || digitar.password !== login.password) return alert('Usuario ou senha incorreta. ')
-    try {
-      client.post('/login', login)
+    client.post('/login', login).then(res => {
+      const { acessToken, name } = res.data
+      localStorage.setItem('token', acessToken)
+      localStorage.setItem('name', name)
       navigate('/home')
-    } catch (error) {
-      console.log(error)
-    }
+    })
+      .catch(error => {
+        console.log(error)
+        return alert('Usuario ou senha incorreta.')
+      })
   }
 
   return (
@@ -40,7 +36,7 @@ export const Login = () => {
       <form>
         <Input name='email' label="Login" type='email' placeholder="login" onChange={handleChange} />
         <Input name='password' label="Password" type='password' placeholder="password" onChange={handleChange} />
-        <a href='#' onClick={handleRememberPassword}>Esqueceu sua senha</a>
+        <a href='#'>Esqueceu sua senha</a>
         <Button type='button' text='Login' onClick={handlerClick} />
       </form>
     </HomeContainer>

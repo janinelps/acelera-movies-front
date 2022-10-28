@@ -4,9 +4,16 @@ import { FormMovie } from '../forms/form'
 import { Modal } from '../modal/modal'
 import { Aside } from './styled'
 
+// const getNameUser = () => {
+//   const [nameLocal] = useState(localStorage.getItem('name'))
+//   return localStorage.getItem()
+// }
+
 export const Menu = () => {
   const navigate = useNavigate()
+  const nameLocal = localStorage.getItem('name')
 
+  console.log(nameLocal)
   const handleClick = () => {
     navigate('/')
   }
@@ -18,7 +25,7 @@ export const Menu = () => {
 
   return (
     <Aside >
-      <section>Helo user!</section>
+      <section>Helo {nameLocal} !</section>
       <Modal text='Add Movie' title='Adicionar Movie'><FormMovie callback={handleSubmit} /></Modal>
       <Link to={'/home'}>Home</Link>
       <Button text='Exit' onClick={handleClick}></Button>
